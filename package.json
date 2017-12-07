@@ -1,0 +1,22 @@
+{
+  "name": "browserify-test",
+  "version": "1.0.0",
+  "description": "this is a npm browserify test",
+  "main": "bundle.js",
+  "dependencies": {
+    "browserify": "^11.2.0",
+    "exorcist": "^1.0.0",
+    "uniq": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify test.js --debug | exorcist bundle.js.map > bundle.js"
+  },
+  "keywords": [
+    "test",
+    "browserify"
+  ],
+  "author": "Sylvain Gogel <sylvain.gogel@gmail.com>",
+  "license": "MIT"
+}
