@@ -18,7 +18,8 @@
     "precommit": "yarn test",
     "test": "yarn dev",
     "dev": "browserify test.js --debug | exorcist bundle.js.map > bundle.js",
-    "build": "browserify test.js --debug | exorcist bundle.js.map > bundle.js"
+    "build": "browserify test.js --debug | exorcist bundle.js.map > bundle.js",
+    "start": "node test.js"
   },
   "keywords": [
     "test",
