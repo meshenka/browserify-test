@@ -11,6 +11,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "browserify test.js --debug | exorcist bundle.js.map > bundle.js",
     "build": "browserify test.js --debug | exorcist bundle.js.map > bundle.js"
   },
   "keywords": [
