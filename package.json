@@ -10,11 +10,13 @@
   "dependencies": {
     "browserify": "^11.2.0",
     "exorcist": "^1.0.0",
+    "husky": "^0.14.3",
     "uniq": "^1.0.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "yarn test",
+    "test": "yarn dev",
     "dev": "browserify test.js --debug | exorcist bundle.js.map > bundle.js",
     "build": "browserify test.js --debug | exorcist bundle.js.map > bundle.js"
   },
