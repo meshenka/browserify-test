@@ -2,24 +2,43 @@
   "name": "browserify-test",
   "version": "1.0.0",
   "description": "this is a npm browserify test",
-  "main": "bundle.js",
+  "main": "test.js",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "comments": true
+        }
+      ]
+    ]
+  },
   "engines": {
     "node": "^9.2.0",
     "yarn": "^1.3.2"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
     "browserify": "^11.2.0",
+    "dotenv": "^4.0.0",
+    "envify": "^4.1.0",
     "exorcist": "^1.0.0",
     "husky": "^0.14.3",
+    "rimraf": "^2.6.2",
     "uniq": "^1.0.1"
   },
   "devDependencies": {},
   "scripts": {
     "precommit": "yarn test",
-    "test": "yarn dev",
-    "dev": "browserify test.js --debug | exorcist bundle.js.map > bundle.js",
-    "build": "browserify test.js --debug | exorcist bundle.js.map > bundle.js",
-    "start": "node test.js"
+    "test": "yarn build && yarn start",
+    "build": "yarn clear && yarn build:node && yarn build:browserify",
+    "clear": "rimraf dist/",
+    "build:node": "babel test.js --out-dir dist/",
+    "build:browserify": "browserify  test.js -t envify -t [ babelify --presets [ env ] ] --debug | exorcist dist/bundle.js.map > dist/bundle.js",
+    "start": "node dist/test.js"
   },
   "keywords": [
     "test",
