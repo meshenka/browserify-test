@@ -30,12 +30,15 @@
     "rimraf": "^2.6.2",
     "uniq": "^1.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^4.12.1"
+  },
   "scripts": {
     "precommit": "yarn test",
     "test": "yarn build && yarn start",
-    "build": "yarn clear && yarn build:node && yarn build:browserify",
+    "build": "yarn clear && yarn lint && yarn build:node && yarn build:browserify",
     "clear": "rimraf dist/",
+    "lint": "eslint test.js --fix",
     "build:node": "babel test.js --out-dir dist/",
     "build:browserify": "browserify  test.js -t envify -t [ babelify --presets [ env ] ] --debug | exorcist dist/bundle.js.map > dist/bundle.js",
     "start": "node dist/test.js"
